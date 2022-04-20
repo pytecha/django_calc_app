@@ -1,0 +1,372 @@
+@font-face {
+    font-family: aquire;
+    src: url("../fonts/AquireBold.otf");
+    font-weight: bold;
+}
+@font-face {
+    font-family: digital;
+    src: url("../fonts/digital-7-mono.ttf");
+}
+@font-face {
+    font-family: nominal5;
+    src: url("../fonts/nominal5.ttf");
+    font-weight: 10;
+}
+.calc-body {
+    width: 400px;
+    height: auto;
+    background-color: #3d3333;
+    border-radius: 4%;
+    font-family: Sans-Serif;
+    font-stretch: ultra-expanded;
+}
+.calc-display {
+    background-color: rgba(255,255,255);
+    width: 90%;
+    height: 8.5rem;
+    padding: 1.5px 2px;
+    box-shadow: inset 0 0 3px 3px rgba(0,0,0,0.25);
+}
+.calc-input {
+    background-color: rgba(0,0,0,0.15);
+    margin-bottom: 0.5px;
+    display: none;
+    font-size: 30px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+    height: 4rem;
+}
+.calc-output {
+    background-color: rgba(0,0,0,0.065);
+    text-align: right;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: none;
+    white-space: nowrap;
+    height: 3rem;
+
+}
+.calc-input-left {
+    display: none;
+    align-items: baseline;
+}
+
+.calc-input-left:after {
+    content: '';
+    width: 2px;
+    height: 20px;
+    background: black;
+    opacity: 0;
+    overflow: auto;
+    animation: blink 0.5s linear infinite alternate;
+}
+
+.calc-output-main {
+    position: relative;
+    bottom: 0.75rem;
+    font-family: digital;
+    font-size: 45px;
+}
+.calc-show-mode {
+    display: none;
+    justify-content: space-around;
+    flex-direction: row;
+    position: relative;
+    z-index: 99;
+    width: 99%;
+    margin: auto;
+    height: 8.25rem;
+    overflow: scroll;
+    border: 2px solid #f0ad4e;
+    font-family: Monospace;
+    background-color: white;
+
+}
+.scroll-hint {
+    position: relative;
+    z-index: 119;
+    bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+.scroll-hint > div {
+    display: none;
+    opacity: 0;
+}
+.sh-right > svg {
+    transform: rotate(180deg);
+}
+
+.animate-scroll-hint {
+    animation: blink 1.5s linear infinite alternate;
+}
+
+.calc-show-mode > div:not(.contrast) {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+}
+.calc-show-mode > div > div {
+    text-align: center;
+}
+.mode-text-3,.mode-text-2,.mode-text-4,.on-error {
+    border: 2px solid transparent;
+    background-color: rgba(0,0,0,0.25);
+}
+.mode-text-1 {
+    border: 2px solid transparent;
+    background-color: #f0ad4e;
+}
+.on-error {
+    border: 2px solid transparent;
+    background-color: rgba(0,0,0,0.09);
+}
+.contrast {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid transparent;
+    background-color: rgba(0,0,0,0.15);
+}
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.calc-indicators {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 5px;
+    height: auto;
+}
+.calc-indicators > span {
+    direction: inline-block;
+    width: 5.75%;
+    height: auto;
+    font-size: 8.85px;
+    text-align: center;
+    border: 2px solid transparent;
+}
+.ishift-passive,.ialpha-passive,.iins-passive,.isto-passive,
+.ircl-passive,.ihyp-passive,.ilttrm-passive,
+.isd-passive,.ireg-passive,.iconvd-passive,
+.iconvr-passive,.iconvg-passive,
+.ifix-passive,.isci-passive,.inorm-passive {
+    background-color: rgba(0,0,0,0.05);
+    color: rgba(0,0,0,0.25);
+}
+.ishift-active,.ialpha-active,.iins-active,.isto-active,
+.ircl-active,.ihyp-active,.ilttrm-active,
+.isd-active,.ireg-active,.iconvd-active,
+.iconvr-active,.iconvg-active,
+.ifix-active,.isci-active,.inorm-active {
+    background-color: #924545;
+    color: white;
+}
+.calc-label,.calc-slogan,.calc-controls {
+    width: 90%;
+    height: auto;
+}
+.calc-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.calc-controls > div {
+    width: 30%;
+    height: auto;
+}
+.mode-togglers {
+    background-color: #3d3333;
+    display: flex;
+    justify-content: space-between;
+}
+.mode-togglers > button {
+    width: 40%;
+    padding: 0;
+    margin: 0;
+}
+.mode-togglers-nbs > button {
+    width: 46%;
+    color: white;
+    background-color: rgba(0,0,0,0.75);
+}
+.navigators {
+    position: relative;
+    border-radius: 30%;
+}
+.navigators > button {
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+#nav-right,#nav-end {
+    transform: rotate(180deg);
+    bottom: 1.38rem;
+    left: 1.25rem;
+}
+#nav-top {
+    transform: rotate(90deg);
+    bottom: 0.5rem;
+    right: 1.20rem;
+}
+#nav-bottom {
+    transform: rotate(-90deg);
+    top: 0.5rem;
+    left: 2rem;
+}
+#nav-left,#nav-home {
+    top: 1.38rem;
+    right: 0.5rem;
+}
+#nav-end,#nav-home {
+    display: none;
+}
+.upper-deck, .lower-deck {
+    width: 90%;
+    height: auto;
+    margin: auto;
+}
+.upper-deck > div > button {
+    width: 15%;
+    background-color: rgba(0,0,0,0.75);
+    color: white;
+    text-align: center;
+}
+.lower-deck > div > button:focus,.upper-deck > div > button:focus,.navigators > button:focus,.mode-togglers > button:focus,.mode-togglers-nbs > button:focus {
+    outline-color: transparent;
+    box-shadow: none;
+    color: white;
+
+}
+.lower-deck > div > button {
+    width: 18%;
+    background-color: rgba(0,0,0,0.75);
+    color: white;
+    text-align: center;
+}
+#factorial,#permutation-func,#rec-func,#cbrt,#clear-mode,#mcomplex-mode,
+#improper-frac,#x-root,#antilog,#antiln,#sexa-convert,#arcsin,
+#arcos,#arctan,#sto,#dis-eng,#semicolon,#minusm,#ins,#power-off,
+#ssum,#svar,#rnd,#rand,#pi,#drg,#percent,#complex-mode {
+    display: none;
+    color: orange
+}
+#colon,#e-base-value,#lttra,#lttrb,#lttrc,#lttrd,#lttre,#lttrf,
+#lttrx,#lttry,#lttrm {
+    display: none;
+    color: rgb(255,133,154);
+}
+#data,#cldt {
+    display: none;
+}
+#sinh,#arcsinh,#cosh,#arcosh,#tanh,#arctanh {
+    display: none;
+    background-color: #5cb85c;
+    color: white;
+}
+#e-base-value,#pi{
+    font-size: 18px;
+    font-family: serif;
+    font-style: italic;
+}
+.e-script,.nominal5 {
+    font-size: 35px;
+    font-family: nominal5;
+}
+.e-script {
+    font-style: italic;
+}
+.apply-serif {
+    font-family: serif;
+    font-size: 16px;
+    font-style: italic;
+}
+.apply-sans-serif {
+    font-family: Sans-Serif;
+    font-style: italic
+}
+.number-entry {
+    font-family: Sans-Serif;
+    font-size: 23px;
+    padding: 0;
+}
+.icon {
+    width: 1.75rem;
+    height: 1.75rem;
+}
+
+.icon-minus-xm {
+    width: 0.4rem;
+    height: 0.4rem;
+    stroke: white;
+}
+.icon-minus {
+    stroke: white;
+}
+.icon-minus-xm:not(.icon-reciprocal):not(.icon-arcsinh):not(.icon-arcosh):not(.icon-arctanh) {
+    stroke: orange;
+}
+.icon-semicolon,.icon-colon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+.icon-colon {
+    width: 1rem;
+    height: 1rem;
+}
+.icon-dash {
+    width: 0.75rem;
+    height: 0.75rem;
+    stroke: white;
+}
+.icon-cbrt {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.icon-nav-btn {
+    width: 2.75rem;
+    height: 2.75rem;
+}
+.i-math-sign {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+.icon-drg,.icon-sexa,.icon-eng,.icon-exponent {
+    width: 0.75rem;
+    height: 0.75rem;
+}
+.icon-drg {
+    fill: orange;
+}
+.icon-y-hat,.icon-y-bar {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+.icon-x-hat,.icon-x-bar {
+    position: relative;
+    bottom: 0.25rem;
+    width: 1.15rem;
+    height: 1.15rem;
+}
+.icon-y-hat-in,.icon-y-bar-in {
+    position: relative;
+    top: 0.075rem;
+    width: 1.75rem;
+    height: 1.75rem;
+}
+.icon-x-hat-in,.icon-x-bar-in {
+    position: relative;
+    bottom: 0.275rem;
+    width: 1.4rem;
+    height: 1.4rem;
+}
