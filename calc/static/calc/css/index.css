@@ -7,11 +7,6 @@
     font-family: digital;
     src: url("../fonts/digital-7-mono.ttf");
 }
-@font-face {
-    font-family: nominal5;
-    src: url("../fonts/nominal5.ttf");
-    font-weight: 10;
-}
 .calc-body {
     width: 400px;
     height: auto;
@@ -278,10 +273,6 @@
     font-size: 18px;
     font-family: serif;
     font-style: italic;
-}
-.e-script,.nominal5 {
-    font-size: 35px;
-    font-family: nominal5;
 }
 .e-script {
     font-style: italic;

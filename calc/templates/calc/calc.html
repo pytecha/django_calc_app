@@ -8,34 +8,34 @@
         for (const x of elements) {
             switch (true) {
                 case $(x).data("id") == "factorial":
-                    expr += "!";
+                    expr += "@hsid";
                     break;
                 case $(x).data("id") == "reciprocal":
                     expr += "**(-1)";
                     break;
                 case $(x).data("id") == "combination-func":
-                    expr += "nCr";
+                    expr += "@dcau";
                     break;
                 case $(x).data("id") == "permutation-func":
-                    expr += "nPr";
+                    expr += "@jaxo";
                     break;
                 case $(x).data("id") == "polar-func":
-                    expr += "pol";
+                    expr += "@jdct";
                     break;
                 case $(x).data("id") == "rec-func":
-                    expr += "rec";
+                    expr += "@jnuw";
                     break;
                 case $(x).data("id") == "colon":
                     expr += ":";
                     break;
                 case $(x).data("id") == "cbrt":
-                    expr += "cbrt";
+                    expr += "@cxgm";
                     break;
                 case $(x).data("id") == "cube":
                     expr += "**3";
                     break;
                 case $(x).data("id") == "sqrt":
-                    expr += "sqrt";
+                    expr += "@khcb";
                     break;
                 case $(x).data("id") == "square-2":
                     expr += "**2";
@@ -44,82 +44,82 @@
                     expr += "**";
                     break;
                 case $(x).data("id") == "x-root":
-                    expr += "xroot";
+                    expr += "@loka";
                     break;
                 case $(x).data("id") == "log":
-                    expr += "log10";
+                    expr += "@idgp";
                     break;
                 case $(x).data("id") == "antilog":
                     expr += "10**";
                     break;
                 case $(x).data("id") == "ln":
-                    expr += "log";
+                    expr += "@ialr";
                     break;
                 case $(x).data("id") == "antiln":
-                    expr += "e**";
+                    expr += "@ryoi**";
                     break;
                 case $(x).data("id") == "e-script":
-                    expr += "e";
+                    expr += "@ryoi";
                     break;
                 case $(x).data("id") == "dash":
                     expr += "-";
                     break;
                 case $(x).data("id") == "lttra":
-                    expr += "A";
+                    expr += "@lwmd";
                     break;
                 case $(x).data("id") == "lttrb":
-                    expr += "B";
+                    expr += "@nwcm";
                     break;
                 case $(x).data("id") == "degree-entry":
-                    expr += "deci";
+                    expr += "@fcdp";
                     break;
                 case $(x).data("id") == "lttrc":
-                    expr += "C";
+                    expr += "@nwsm";
                     break;
                 case $(x).data("id") == "sin":
-                    expr += "sin";
+                    expr += "@jqco";
                     break;
                 case $(x).data("id") == "sinh":
-                    expr += "sinh";
+                    expr += "@kdvz";
                     break;
                 case $(x).data("id") == "arcsin":
-                    expr += "asin";
+                    expr += "@bovn";
                     break;
                 case $(x).data("id") == "arcsinh":
-                    expr += "asinh";
+                    expr += "@bowq";
                     break;
                 case $(x).data("id") == "cos":
-                    expr += "cos";
+                    expr += "@dghm";
                     break;
                 case $(x).data("id") == "cosh":
-                    expr += "cosh";
+                    expr += "@ewqa";
                     break;
                 case $(x).data("id") == "arcos":
-                    expr += "acos";
+                    expr += "@anpu";
                     break;
                 case $(x).data("id") == "arcosh":
-                    expr += "acosh";
+                    expr += "@aspy";
                     break;
                 case $(x).data("id") == "tan":
-                    expr += "tan";
+                    expr += "@kjba";
                     break;
                 case $(x).data("id") == "tanh":
-                    expr += "tanh";
+                    expr += "@kwio";
                     break;
                 case $(x).data("id") == "arctan":
-                    expr += "atan";
+                    expr += "@cgfn";
                     break;
                 case $(x).data("id") == "arctanh":
-                    expr += "atanh";
+                    expr += "@cniy";
                     break;
                 case $(x).data("id") == "lttrd":
-                    expr += "D";
+                    expr += "@oayw";
                     break;
                 case $(x).data("id") == "lttre":
-                    expr += "E";
+                    expr += "@odwk";
                     break;
                 case $(x).data("id") == "lttrf":
-                    expr += "F";
+                    expr += "@opnz";
                     break;
                 case $(x).data("id") == "l-parenthesis":
                     expr += "(";
@@ -128,10 +128,10 @@
                     expr += ")";
                     break;
                 case $(x).data("id") == "lttrx":
-                    expr += "X";
+                    expr += "@psac";
                     break;
                 case $(x).data("id") == "lttry":
-                    expr += "Y";
+                    expr += "@qxfj";
                     break;
                 case $(x).data("id") == "semicolon":
                     expr += ";";
@@ -140,7 +140,7 @@
                     expr += ",";
                     break;
                 case $(x).data("id") == "lttrm":
-                    expr += "M";
+                    expr += "@pcht";
                     break;
                 case $(x).data("id") == "nine":
                     expr += "9";
@@ -164,10 +164,14 @@
                     expr += "3";
                     break;
                 case $(x).data("id") == "two":
-                    expr += "2";
+                    if($(x).prev().data("id") != "ans") {
+                        expr += "2";
+                    }
                     break;
                 case $(x).data("id") == "one":
-                    expr += "1";
+                    if($(x).prev().data("id") != "ans") {
+                        expr += "1";
+                    }
                     break;
                 case $(x).data("id") == "zero":
                     expr += "0";
@@ -176,22 +180,22 @@
                     expr += ".";
                     break;
                 case $(x).data("id") == "rand":
-                    expr += "rand";
+                    expr += "@rand";
                     break;
                 case $(x).data("id") == "pi":
-                    expr += "pi";
+                    expr += "@ukgj";
                     break;
                 case $(x).data("id") == "pow10":
                     expr += "*10**";
                     break;
                 case $(x).data("id") == "deg":
-                    expr += "deg";
+                    expr += "@fymn";
                     break;
                 case $(x).data("id") == "rad":
-                    expr += "rad";
+                    expr += "@jkya";
                     break;
                 case $(x).data("id") == "grad":
-                    expr += "grad";
+                    expr += "@hxzg";
                     break;
                 case $(x).data("id") == "plus":
                     expr += "+";
@@ -206,7 +210,15 @@
                     expr += "/";
                     break;
                 case $(x).data("id") == "ans":
-                    expr += "Ans";
+                    if($(x).next().data("id") == "one") {
+                        expr += $("#equals").data("Ans1");
+                    }
+                    else if($(x).next().data("id") == "two") {
+                        expr += $("#equals").data("Ans2");
+                    }
+                    else {
+                        expr += $("#equals").data("Ans");
+                    }
                     break;
                 default:
                     console.log(`${x} not matched`);
@@ -260,23 +272,30 @@
                         data: {
                             csrfmiddlewaretoken: '{{ csrf_token }}',
                             expr: getExpr(),
-                            labels: JSON.stringify($("#equals").data("labels")),
                             pt: JSON.stringify(getActiveDispMode()),
                             aunit: getActiveUnit(),
                         },
                         success: function(response) {
-                            $(".calc-output-main").html(response.resf);
-                            if (!(["Math Error","Syntax Error"].includes(response.resf))) {
-                                const obj = $("#equals").data("labels");
-                                obj.Ans = response.res;
-                                $("#equals").data("labels", obj);
-                            }
-                            else {
-                                showError(response.resf);
+                            if (!(["Math Error", "Syntax Error"].includes(response.resf))) {
+                            	if (typeof response.resf === "object") {
+                            		$(".calc-output-main").html(`(${response.resf[0]}, ${response.resf[1]})`);
+                            		const Ans = `@jdhm(${response.res[0]}, ${response.res[1]})`;
+                            		const Ans1 = response.res[0]
+                            		const Ans2 = response.res[1]
+                            		$("#equals").data({Ans:Ans, Ans1:Ans1, Ans2:Ans2});
+                            		$(".calc-output").scrollLeft(0);
+                            	} else {
+                            		$(".calc-output-main").html(response.resf);
+                            		$("#equals").data("Ans", response.resf);
+                            		$(".calc-output").scrollLeft(0);
+                            	}
+                            } else {
+                            	showError(response.resf);
+                            
                             }
                         },
                         error: function(response) {
-                            showError(response);
+                            showError("Network Error");
                         }
                     });
                 }, 100);

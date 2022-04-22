@@ -302,18 +302,7 @@ $(() => {
 			sdstate: 0,
 			regstate: 0
 		});
-		$("#equals").data("labels", {
-			A: 0,
-			B: 0,
-			C: 0,
-			D: 0,
-			E: 0,
-			F: 0,
-			X: 0,
-			Y: 0,
-			M: 0,
-			Ans: 0
-		});
+		$("#equals").data({Ans:0, Ans1:0, Ans2:0})
 		$("#ifix,#isci,#inorm").data("setting", false);
 		setTimeout(() => {
 				for (let id of calcIndicators.split(" ")) {
@@ -398,7 +387,7 @@ $(() => {
 
 	$("#equals").click(() => {
 		if (!(anyModeActive())) {
-			supportModesToggle();
+			supportModesToggle();;
 		}
 	});
 	
@@ -1418,6 +1407,7 @@ $(() => {
 			case progress === 2:
 				opposeState("iconvr iconvg");
 				affirmState("iconvd");
+				recalculate();
 				calcHome();
 				break;
 			case progress === 3 && $("#ifix").data("setting"):
@@ -1580,6 +1570,7 @@ $(() => {
 			case progress === 2:
 				opposeState("iconvd iconvg");
 				affirmState("iconvr");
+				recalculate();
 				calcHome();
 				break;
 			case progress === 3 && $("#ifix").data("setting"):
@@ -1735,6 +1726,7 @@ $(() => {
 			case progress === 2:
 				opposeState("iconvd iconvr");
 				affirmState("iconvg");
+				recalculate();
 				calcHome();
 				break;
 			case progress === 3 && $("#ifix").data("setting"):
@@ -2026,8 +2018,8 @@ $(() => {
 	$("#plus").click(() => setValue("<span data-id=\"plus\">+</span>"));
 	$("#minus").click(() => setValue("<span data-id=\"minus\">-</span>"));
 	$("#divide").click(() => setValue("<span data-id=\"divide\">÷</span>"));
-	$("#times").click(() => setValue("<span data-id=\"times\">*</span>"));
-	$("#pow10").click(() => setValue("<span data-id=\"pow10\">*<span class=\"nominal5\">10</span>^</span>"));
+	$("#times").click(() => setValue("<span data-id=\"times\">x</span>"));
+	$("#pow10").click(() => setValue("<span data-id=\"pow10\">x<span>10</span>^</span>"));
 	$("#ans").click(() => setValue("<span data-id=\"ans\">Ans</span>"));
 	$("#pi").click(() => setValue("<span data-id=\"pi\">π</span>"));
 	$("#percent").click(() => setValue("<span data-id=\"percent\">%</span>"));
@@ -2047,7 +2039,7 @@ $(() => {
 	$("#lttrx").click(() => setValue("<span data-id=\"lttrx\">X</span>"));
 	$("#lttry").click(() => setValue("<span data-id=\"lttry\">Y</span>"));
 	$("#dash").click(() => setValue("<span data-id=\"dash\">-</span>"));
-	$("#degree-entry").click(() => setValue("<span data-id=\"degree-entry\"><sup style=\"font-family:aquire;font-size:27.5px;\">0</sup></span>"));
+	$("#degree-entry").click(() => setValue("<span data-id=\"degree-entry\"><sup style=\"font-family:aquire;font-size:21px;\">0</sup></span>"));
 	$("#sin").click(() => setValue("<span class=\"pe-1\" data-id=\"sin\">sin</span>**<span data-id=\"l-parenthesis\">(</span>", "<span data-id=\"r-parenthesis\">)</span>"));
 	$("#sinh").click(() => setValue("<span class=\"pe-1\" data-id=\"sinh\">sinh</span>**<span data-id=\"l-parenthesis\">(</span>", "<span data-id=\"r-parenthesis\">)</span>"));
 	$("#arcsin").click(() => setValue("<span class=\"pe-1\" data-id=\"arcsin\">sin<sup>-1</sup></span>**<span data-id=\"l-parenthesis\">(</span>", "<span data-id=\"r-parenthesis\">)</span>"));
@@ -2065,10 +2057,10 @@ $(() => {
 	$("#exponent").click(() => setValue("<span data-id=\"exponent\">^</span>"));
 	$("#x-root").click(() => setValue("<span data-id=\"x-root\"><sup>x</sup>√</span>"));
 	$("#log").click(() => setValue("<span class=\"pe-1\" data-id=\"log\">log</span>**<span data-id=\"l-parenthesis\">(</span>", "<span data-id=\"r-parenthesis\">)</span>"));
-	$("#antilog").click(() => setValue("<span data-id=\"antilog\"><span class=\"nominal5\">10</span>^</span>"));
+	$("#antilog").click(() => setValue("<span data-id=\"antilog\"><span>10</span>^</span>"));
 	$("#ln").click(() => setValue("<span class=\"pe-1\" data-id=\"ln\">ln</span>**<span data-id=\"l-parenthesis\">(</span>", "<span data-id=\"r-parenthesis\">)</span>"));
 	$("#rand").click(() => setValue("<span class=\"pe-1\" data-id=\"rand\">Ran#</span>"));
-	$("#antiln").click(() => setValue("<span data-id=\"antiln\"><span class=\"nominal5\">e</span>^</span>"));
+	$("#antiln").click(() => setValue("<span data-id=\"antiln\"><span>e</span>^</span>"));
 	$("#cube").click(() => setValue("<span data-id=\"cube\"><sup>3</sup></span>"));
 	$("#cbrt").click(() => setValue("<span data-id=\"cbrt\"><sup>3</sup>√</span>"));
 	$("#polar-func").click(() => setValue("<span data-id=\"polar-func\">Pol</span>**<span data-id=\"l-parenthesis\">(</span>", "<span data-id=\"r-parenthesis\">)</span>"));
