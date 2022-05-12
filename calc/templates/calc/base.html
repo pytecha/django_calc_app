@@ -143,7 +143,7 @@
                 <div class="calc-indicators d-none">
                     <span id="ishift">S</span>
                     <span id="ialpha">A</span>
-                    <span id="ihyp">hyp</span>
+                    <span id="ihyp">Hyp</span>
                     <span id="iins">Ins</span>
                     <span id="ilttrm">M</span>
                     <span id="isto">STO</span>
@@ -155,7 +155,7 @@
                     <span id="iconvg">G</span>
                     <span id="ifix">FIX</span>
                     <span id="isci">SCI</span>
-                    <span id="inorm" data-active="true" data-option="2">Nrm</span>
+                    <span id="inorm" data-active="true" data-option="2">NRM</span>
                 </div>
                 <div class="calc-input p-1 mx-1 mt-1 rounded" style="font-family:monospace;">
                     <div class="calc-input-left"></div>
@@ -164,32 +164,33 @@
                 <div class="calc-output rounded mb-1 mx-1 px-1">
                     <div class="calc-output-main"></div>
                 </div>
+                <!--div class="text-center">Select ?</div-->
                 <div class="calc-show-mode rounded-3 p-3">
-                    <div class="show-first">
+                    <div class="show-first pt-1">
                         <div class="mode-text-1 btn btn-lg w-100 h2 rounded p-2"></div>
                         <div class="mode-id-1 h4">
                             1
                         </div>
                     </div>
-                    <div class="show-second">
+                    <div class="show-second pt-1">
                         <div class="mode-text-2 btn btn-lg w-100 h2 rounded p-2"></div>
                         <div class="mode-id-2 h4">
                             2
                         </div>
                     </div>
-                    <div class="show-third">
+                    <div class="show-third pt-1">
                         <div class="mode-text-3 btn btn-lg w-100 h2 rounded p-2"></div>
                         <div class="mode-id-3 h4">
                             3
                         </div>
                     </div>
-                    <div class="show-forth">
+                    <div class="show-forth pt-1">
                         <div class="mode-text-4 btn btn-lg w-100 h2 rounded p-2"></div>
                         <div class="mode-id-3 h4">
                             4
                         </div>
                     </div>
-                    <div class="contrast w-100 p-3 my-3 rounded">
+                    <div class="contrast w-100 px-3 py-1 my-3 rounded">
                         <div class="text-dark fs-4 d-flex fw-bold">
                             <svg class="icon me-2" style="transform:rotate(180deg);"><use xlink:href="#icon-arrow-head-right" href="#icon-arrow-head-right"></use></svg>
                             LIGHT
@@ -202,7 +203,7 @@
                             <svg class="icon ms-2"><use xlink:href="#icon-arrow-head-right" href="#icon-arrow-head-right"></use></svg>
                         </div>
                     </div>
-                    <div class="on-error p-3 w-75 rounded-3">
+                    <div class="on-error px-3 pt-1 pb-2 w-75 rounded-3">
                         <div class="error-box fs-3"></div>
                         <div>
                             <svg class="icon icon-error"><use xlink:href="#icon-error" href="#icon-error"></use></svg>
@@ -226,23 +227,18 @@
                     </div>
                     <div class="d-flex justify-content-between mt-1 mode-togglers-nbs">
                         <button class="btn btn-sm py-0" id="reciprocal">
-                            <span class="apply-sans-serif">x</span>
-                            <sup>
-                                <svg class="icon icon-reciprocal icon-minus-xm"><use xlink:href="#icon-minus" href="#icon-minus"></use></svg>1
-                            </sup>
+                            <span>X</span><sup><svg class="icon icon-reciprocal icon-minus-xm"><use xlink:href="#icon-minus" href="#icon-minus"></use></svg>1</sup>
                         </button>
-                        <button class="btn btn-sm py-0 apply-serif" id="factorial">x!</button>
+                        <button class="btn btn-sm py-0 apply-cursive" id="factorial">X!</button>
                         <button class="btn btn-sm" id="combination-func">nCr</button>
                         <button class="btn btn-sm" id="permutation-func">nPr</button>
                     </div>
                 </div>
                 <div class="navigators bg-white">
                     <button class="btn" id="nav-left"><svg class="icon icon-nav-btn"><use xlink:href="#icon-nav-btn" href="#icon-nav-btn"></use></svg></button>
-                    <button class="btn" id="nav-home"><svg class="icon icon-nav-btn"><use xlink:href="#icon-nav-btn" href="#icon-nav-btn"></use></svg></button>
                     <button class="btn" id="nav-top"><svg class="icon icon-nav-btn"><use xlink:href="#icon-nav-btn" href="#icon-nav-btn"></use></svg></button>
                     <button class="btn" id="nav-bottom"><svg class="icon icon-nav-btn"><use xlink:href="#icon-nav-btn" href="#icon-nav-btn"></use></svg></button>
                     <button class="btn" id="nav-right"><svg class="icon icon-nav-btn"><use xlink:href="#icon-nav-btn" href="#icon-nav-btn"></use></svg></button>
-                    <button class="btn" id="nav-end"><svg class="icon icon-nav-btn"><use xlink:href="#icon-nav-btn" href="#icon-nav-btn"></use></svg></button>
                 </div>
                 <div class="bg-light rounded py-1 px-2">
                     <div class="d-flex justify-content-between rounded p-1 mode-togglers">
@@ -257,8 +253,7 @@
                             <svg class="icon icon-colon"><use xlink:href="#icon-colon" href="#icon-colon"></use></svg>
                         </button>
                         <button class="btn btn-sm" id="cube">
-                            <span class="apply-sans-serif">x</span>
-                            <sup>3</sup>
+                            <span>X</span><sup>3</sup>
                         </button>
                         <button class="btn btn-sm py-0" id="cbrt">
                             <svg class="icon icon-cbrt"><use xlink:href="#icon-cbrt" href="#icon-cbrt"></use></svg>
@@ -277,9 +272,8 @@
                     <button class="btn" id="sqrt">
                         <svg class="icon icon-sqrt"><use xlink:href="#icon-sqrt" href="#icon-sqrt"></use></svg>
                     </button>
-                    <button class="btn btn-sm py-0" id="square-2">
-                        <span class="apply-sans-serif">x</span>
-                        <sup>2</sup>
+                    <button class="btn btn-sm py-0" id="square">
+                        <span>X</span><sup>2</sup>
                     </button>
                     <button class="btn" id="exponent">
                         <svg class="icon icon-exponent"><use xlink:href="#icon-exponent" href="#icon-exponent"></use></svg>
@@ -288,12 +282,10 @@
                         <svg class="icon icon-x-root"><use xlink:href="#icon-x-root" href="#icon-x-root"></use></svg>
                     </button>
                     <button class="btn" id="log">log</button>
-                    <button class="btn btn-sm py-0" id="antilog">10
-                        <sup class="apply-serif">x</sup>
-                    </button>
+                    <button class="btn btn-sm py-0" id="antilog">10<sup>x</sup></button>
                     <button class="btn" id="ln">ln</button>
                     <button class="btn btn-sm py-0" id="e-base-value">e</button>
-                    <button class="btn btn-sm py-0" id="antiln">e<sup class="apply-serif">x</sup></button>
+                    <button class="btn btn-sm py-0" id="antiln">e<sup>x</sup></button>
                 </div>
                 <div class="d-flex justify-content-between py-1">
                     <button class="btn" id="dash">
@@ -312,39 +304,39 @@
                     <button class="btn" id="sin">sin</button>
                     <button class="btn" id="sinh">sinh</button>
                     <button class="btn" id="lttrd">D</button>
-                    <button class="btn btn-sm px-0" id="arcsin">sin
-                        <sup>
+                    <button class="btn btn-sm px-0" id="arcsin">
+                        sin<sup>
                             <svg class="icon icon-minus-xm"><use xlink:href="#icon-minus" href="#icon-minus"></use></svg>1
                         </sup>
                     </button>
-                    <button class="btn btn-sm px-0" id="arcsinh">sinh
-                        <sup>
+                    <button class="btn btn-sm px-0" id="arcsinh">
+                        sinh<sup>
                             <svg class="icon icon-arcsinh icon-minus-xm"><use xlink:href="#icon-minus" href="#icon-minus"></use></svg>1
                         </sup>
                     </button>
                     <button class="btn" id="cos">cos</button>
                     <button class="btn btn-sm" id="cosh">cosh</button>
                     <button class="btn" id="lttre">E</button>
-                    <button class="btn btn-sm px-0" id="arcos">cos
-                        <sup>
+                    <button class="btn btn-sm px-0" id="arcos">
+                        cos<sup>
                             <svg class="icon icon-minus-xm"><use xlink:href="#icon-minus" href="#icon-minus"></use></svg>1
                         </sup>
                     </button>
-                    <button class="btn btn-sm px-0" id="arcosh">cosh
-                        <sup>
+                    <button class="btn btn-sm px-0" id="arcosh">
+                        cosh<sup>
                             <svg class="icon icon-arcosh icon-minus-xm"><use xlink:href="#icon-minus" href="#icon-minus"></use></svg>1
                         </sup>
                     </button>
                     <button class="btn" id="tan">tan</button>
                     <button class="btn" id="tanh">tanh</button>
                     <button class="btn" id="lttrf">F</button>
-                    <button class="btn btn-sm px-0" id="arctan">tan
-                        <sup>
+                    <button class="btn btn-sm px-0" id="arctan">
+                        tan<sup>
                             <svg class="icon icon-minus-xm"><use xlink:href="#icon-minus" href="#icon-minus"></use></svg>1
                         </sup>
                     </button>
-                    <button class="btn btn-sm px-0" id="arctanh">tanh
-                        <sup>
+                    <button class="btn btn-sm px-0" id="arctanh">
+                        tanh<sup>
                             <svg class="icon icon-arctanh icon-minus-xm"><use xlink:href="#icon-minus" href="#icon-minus"></use></svg>1
                         </sup>
                     </button>
@@ -370,8 +362,8 @@
                     <button class="btn" id="lttrm">M</button>
                     <button class="btn text-primary bg-secondary bg-opacity-50 fw-bold" id="data">DT</button>
                     <button class="btn text-danger bg-secondary bg-opacity-50 fw-bold" id="cldt">CL</button>
-                    <button class="btn" id="minusm">M
-                        <svg class="icon icon-minus-xm"><use xlink:href="#icon-minus" href="#icon-minus"></use></svg>
+                    <button class="btn" id="minusm">
+                        M<svg class="icon icon-minus-xm"><use xlink:href="#icon-minus" href="#icon-minus"></use></svg>
                     </button>
                 </div>
             </div>
@@ -416,7 +408,7 @@
                         <svg class="icon i-math-sign icon-dot"><use xlink:href="#icon-dot" href="#icon-dot"></use></svg>
                     </button>
                     <button class="btn" id="rand">Ran#</button>
-                    <button class="btn btn-sm py-0" id="pow10">&#10761;10<sup class="apply-serif">x</sup></button>
+                    <button class="btn btn-sm py-0 number-entry" id="pow10"><span style="font-size:14px;font-weight:bold;">&#10761;</span>10<sup style="font-size:15px;">x</sup></button>
                     <button class="btn btn-sm py-0" id="pi">&#960;</button>
                     <button class="btn" id="ans">Ans</button>
                     <button class="btn btn-sm px-0" id="drg">DRG

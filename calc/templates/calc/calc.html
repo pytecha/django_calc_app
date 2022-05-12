@@ -1,305 +1,280 @@
 {% extends 'calc/base.html' %}
 {% block jquery %}
 <script type="text/javascript" charset="utf-8">
-    "use strict";
     function getExpr() {
-        const elements = $(".calc-input > div").children();
-        let expr = "";
-        for (const x of elements) {
-            switch (true) {
-                case $(x).data("id") == "factorial":
-                    expr += "@hsid";
-                    break;
-                case $(x).data("id") == "reciprocal":
-                    expr += "**(-1)";
-                    break;
-                case $(x).data("id") == "combination-func":
-                    expr += "@dcau";
-                    break;
-                case $(x).data("id") == "permutation-func":
-                    expr += "@jaxo";
-                    break;
-                case $(x).data("id") == "polar-func":
-                    expr += "@jdct";
-                    break;
-                case $(x).data("id") == "rec-func":
-                    expr += "@jnuw";
-                    break;
-                case $(x).data("id") == "colon":
-                    expr += ":";
-                    break;
-                case $(x).data("id") == "cbrt":
-                    expr += "@cxgm";
-                    break;
-                case $(x).data("id") == "cube":
-                    expr += "**3";
-                    break;
-                case $(x).data("id") == "sqrt":
-                    expr += "@khcb";
-                    break;
-                case $(x).data("id") == "square-2":
-                    expr += "**2";
-                    break;
-                case $(x).data("id") == "exponent":
-                    expr += "**";
-                    break;
-                case $(x).data("id") == "x-root":
-                    expr += "@loka";
-                    break;
-                case $(x).data("id") == "log":
-                    expr += "@idgp";
-                    break;
-                case $(x).data("id") == "antilog":
-                    expr += "10**";
-                    break;
-                case $(x).data("id") == "ln":
-                    expr += "@ialr";
-                    break;
-                case $(x).data("id") == "antiln":
-                    expr += "@ryoi**";
-                    break;
-                case $(x).data("id") == "e-script":
-                    expr += "@ryoi";
-                    break;
-                case $(x).data("id") == "dash":
-                    expr += "-";
-                    break;
-                case $(x).data("id") == "lttra":
-                    expr += "@lwmd";
-                    break;
-                case $(x).data("id") == "lttrb":
-                    expr += "@nwcm";
-                    break;
-                case $(x).data("id") == "degree-entry":
-                    expr += "@fcdp";
-                    break;
-                case $(x).data("id") == "lttrc":
-                    expr += "@nwsm";
-                    break;
-                case $(x).data("id") == "sin":
-                    expr += "@jqco";
-                    break;
-                case $(x).data("id") == "sinh":
-                    expr += "@kdvz";
-                    break;
-                case $(x).data("id") == "arcsin":
-                    expr += "@bovn";
-                    break;
-                case $(x).data("id") == "arcsinh":
-                    expr += "@bowq";
-                    break;
-                case $(x).data("id") == "cos":
-                    expr += "@dghm";
-                    break;
-                case $(x).data("id") == "cosh":
-                    expr += "@ewqa";
-                    break;
-                case $(x).data("id") == "arcos":
-                    expr += "@anpu";
-                    break;
-                case $(x).data("id") == "arcosh":
-                    expr += "@aspy";
-                    break;
-                case $(x).data("id") == "tan":
-                    expr += "@kjba";
-                    break;
-                case $(x).data("id") == "tanh":
-                    expr += "@kwio";
-                    break;
-                case $(x).data("id") == "arctan":
-                    expr += "@cgfn";
-                    break;
-                case $(x).data("id") == "arctanh":
-                    expr += "@cniy";
-                    break;
-                case $(x).data("id") == "lttrd":
-                    expr += "@oayw";
-                    break;
-                case $(x).data("id") == "lttre":
-                    expr += "@odwk";
-                    break;
-                case $(x).data("id") == "lttrf":
-                    expr += "@opnz";
-                    break;
-                case $(x).data("id") == "l-parenthesis":
-                    expr += "(";
-                    break;
-                case $(x).data("id") == "r-parenthesis":
-                    expr += ")";
-                    break;
-                case $(x).data("id") == "lttrx":
-                    expr += "@psac";
-                    break;
-                case $(x).data("id") == "lttry":
-                    expr += "@qxfj";
-                    break;
-                case $(x).data("id") == "semicolon":
-                    expr += ";";
-                    break;
-                case $(x).data("id") == "comma":
-                    expr += ",";
-                    break;
-                case $(x).data("id") == "lttrm":
-                    expr += "@pcht";
-                    break;
-                case $(x).data("id") == "nine":
-                    expr += "9";
-                    break;
-                case $(x).data("id") == "eight":
-                    expr += "8";
-                    break;
-                case $(x).data("id") == "seven":
-                    expr += "7";
-                    break;
-                case $(x).data("id") == "six":
-                    expr += "6";
-                    break;
-                case $(x).data("id") == "five":
-                    expr += "5";
-                    break;
-                case $(x).data("id") == "four":
-                    expr += "4";
-                    break;
-                case $(x).data("id") == "three":
-                    expr += "3";
-                    break;
-                case $(x).data("id") == "two":
-                    if($(x).prev().data("id") != "ans") {
-                        expr += "2";
-                    }
-                    break;
-                case $(x).data("id") == "one":
-                    if($(x).prev().data("id") != "ans") {
-                        expr += "1";
-                    }
-                    break;
-                case $(x).data("id") == "zero":
-                    expr += "0";
-                    break;
-                case $(x).data("id") == "dot":
-                    expr += ".";
-                    break;
-                case $(x).data("id") == "rand":
-                    expr += "@rand";
-                    break;
-                case $(x).data("id") == "pi":
-                    expr += "@ukgj";
-                    break;
-                case $(x).data("id") == "pow10":
-                    expr += "*10**";
-                    break;
-                case $(x).data("id") == "deg":
-                    expr += "@fymn";
-                    break;
-                case $(x).data("id") == "rad":
-                    expr += "@jkya";
-                    break;
-                case $(x).data("id") == "grad":
-                    expr += "@hxzg";
-                    break;
-                case $(x).data("id") == "plus":
-                    expr += "+";
-                    break;
-                case $(x).data("id") == "minus":
-                    expr += "-";
-                    break;
-                case $(x).data("id") == "times":
-                    expr += "*";
-                    break;
-                case $(x).data("id") == "divide":
-                    expr += "/";
-                    break;
-                case $(x).data("id") == "ans":
-                    if($(x).next().data("id") == "one") {
-                        expr += $("#equals").data("Ans1");
-                    }
-                    else if($(x).next().data("id") == "two") {
-                        expr += $("#equals").data("Ans2");
-                    }
-                    else {
-                        expr += $("#equals").data("Ans");
-                    }
-                    break;
-                default:
-                    console.log(`${x} not matched`);
-                }
-            }
-            return expr;
-        }
-
-        function showError(msg) {
-            $(".calc-input,.calc-output,.calc-indicators,.contrast").animate({
-                opacity: 0
-            }, 400).css("display", "none");
-            $(".error-box").html(msg);
-            $(".calc-show-mode > div").not('.on-error').css("display", "none");
-            $(".calc-show-mode,.on-error").css({
-                opacity: 1,
-                display: "flex"
-            });
-            $(".calc-display").data("error", true);
-        }
-
-        function anyModeActive() {
-            return ($("#power-off").data("active") || $("#base-mode").data("progress") > 0 || $("#clear-mode").data("state") > 0 || $(".calc-display").data("error") || $(".calc-display").data("dispset") || $(".calc-display").data("contset") || $("#ireg").data("view") > 0 || $("#ssum").data("sdstate") === 1 || $("#svar").data("sdstate") === 1 || $("#ssum").data("regstate") === 1 || $("#svar").data("regstate") === 1);
-        }
-        function getActiveDispMode() {
-            if ($("#ifix").data("active")) {
-                return {disp:"fix",option:$("#ifix").data("option")};
-            }
-            else if ($("#isci").data("active")) {
-                return {disp:"sci",option:$("#isci").data("option")};
-            }
-            return {disp:"norm",option:$("#inorm").data("option")};
-        }
-
-        function getActiveUnit() {
-            if ($("#iconvd").data("active")) {
-                return "deg";
-            }
-            else if ($("#iconvr").data("active")) {
-                return "rad";
-            }
-            return "grad";
-        }
-        
-        $("#equals").click(() => {
-            if (!(anyModeActive())) {
-                setTimeout(() => {
-                    $.ajax({
-                        type: "POST",
-                        url: "{% url 'ajax-math' %}",
-                        data: {
-                            csrfmiddlewaretoken: '{{ csrf_token }}',
-                            expr: getExpr(),
-                            pt: JSON.stringify(getActiveDispMode()),
-                            aunit: getActiveUnit(),
-                        },
-                        success: function(response) {
-                            if (!(["Math Error", "Syntax Error"].includes(response.resf))) {
-                            	if (typeof response.resf === "object") {
-                            		$(".calc-output-main").html(`(${response.resf[0]}, ${response.resf[1]})`);
-                            		const Ans = `@jdhm(${response.res[0]}, ${response.res[1]})`;
-                            		const Ans1 = response.res[0]
-                            		const Ans2 = response.res[1]
-                            		$("#equals").data({Ans:Ans, Ans1:Ans1, Ans2:Ans2});
-                            		$(".calc-output").scrollLeft(0);
-                            	} else {
-                            		$(".calc-output-main").html(response.resf);
-                            		$("#equals").data("Ans", response.resf);
-                            		$(".calc-output").scrollLeft(0);
-                            	}
-                            } else {
-                            	showError(response.resf);
-                            
-                            }
-                        },
-                        error: function(response) {
-                            showError("Network Error");
-                        }
-                    });
-                }, 100);
-            }
-        });
-    </script>
+    	"use strict";
+    	const elements = $(".calc-input > div").children();
+    	let expr = "";
+    	const stats_id = "sum2x sum2y sum3x meanx meany coefa estmx nobs sum4x sdy coefr sumx sumy sum2xy stdx stdy coefb estmy sumxy sdy sdx coefc".split(" ");
+    	const mathSigns = {
+    		plus: "+",
+    		divide: "/",
+    		times: "*",
+    		minus: "-"
+    	};
+    	const alpNumPun = {
+    		dot: ".",
+    		comma: ",",
+    		semicolon: ";",
+    		colon: ":",
+    		dash: "-",
+    		pi: "pi",
+    		rand: "rand",
+    		zero: "0",
+    		three: "3",
+    		four: "4",
+    		five: "5",
+    		six: "6",
+    		seven: "7",
+    		eight: "8",
+    		nine: "9",
+    		"e-script": "e",
+    		"l-parenthesis": "(",
+    		"r-parenthesis": ")"
+    	};
+    	const funcs = {
+    		cbrt: "@cxgm",
+    		deg: "@fymn",
+    		rad: "@jkya",
+    		grad: "@hxzg",
+    		sin: "@jqco",
+    		sinh: "@kdvz",
+    		arcsin: "@bovn",
+    		arcsinh: "@bowq",
+    		cos: "@dghm",
+    		pow10: "*10@hqzn",
+    		cosh: "@ewqa",
+    		arcos: "@anpu",
+    		arcosh: "@aspy",
+    		tan: "@kjba",
+    		tanh: "@kwio",
+    		arctan: "@cgfn",
+    		arctanh: "@cniy",
+    		factorial: "@hsid",
+    		antiln: "e@hqzn",
+    		cube: "@hqzn3",
+    		sqrt: "@khcb",
+    		square: "@hqzn2",
+    		reciprocal: "@hqzn-1",
+    		exponent: "@hqzn",
+    		log: "@idgp",
+    		percent: "@iprt",
+    		ln: "@ialr",
+    		antilog: "10@hqzn",
+    		"combination-func": "@dcau",
+    		"permutation-func": "@jaxo",
+    		"polar-func": "@jdct",
+    		"rec-func": "@jnuw",
+    		"x-root": "@loka",
+    		"degree-entry": "@fcdp"
+    	};
+    	for (const x of elements) {
+    		switch (true) {
+    			case stats_id.includes($(x).data("id")):
+    				expr += `(${$("#data").data("regdata")[$(x).data("id")]})`;
+    				break;
+    			case $(x).data("id") == "two":
+    				if ($(x).prev().data("id") != "ans") {
+    					expr += "2";
+    				}
+    				break;
+    			case $(x).data("id") == "one":
+    				if ($(x).prev().data("id") != "ans") {
+    					expr += "1";
+    				}
+    				break;
+    			case $(x).data("id") in {"memory":"", "equals":""}:
+    				expr += "NotVal";
+    				break;
+    			case $(x).data("id") in funcs:
+    				expr += funcs[$(x).data("id")];
+    				break;
+    			case $(x).data("id") in mathSigns:
+    				expr += mathSigns[$(x).data("id")];
+    				break;
+    			case $(x).data("id") in alpNumPun:
+    				expr += alpNumPun[$(x).data("id")];
+    				break;
+    			case $(x).data("id").startsWith("lttr"):
+    				const l = $(x).data("id").slice(4);
+    				expr += `(${$("#lttr"+l).data(l.toUpperCase())})`;
+    				break;
+    			case $(x).data("id") == "ans":
+    				if ($(x).next().data("id") == "one") {
+    					expr += `(${$("#equals").data("Ans1")})`;
+    				} else if ($(x).next().data("id") == "two") {
+    					expr += `(${$("#equals").data("Ans2")})`;
+    				} else {
+    					expr += `(${$("#equals").data("Ans")})`;
+    				}
+    				break;
+    			default:
+    				console.log(`${x} not matched`);
+    		}
+    	}
+    	if ($("#equals").data("recalculate")) {
+    		$("#equals").data("recalculate", false);
+    		return $("#equals").data("Ans");
+    	} else if (expr.match(/NotVal$/)) {
+    		return expr.replace(/NotVal$/, "");
+    	}
+    	return expr;
+    }
+    
+    function showError(msg) {
+    	"use strict";
+    	$(".calc-input,.calc-output,.calc-indicators,.contrast").animate({
+    		opacity: 0
+    	}, 400).css("display", "none");
+    	$(".error-box").html(msg);
+    	$(".calc-show-mode > div").not('.on-error').css("display", "none");
+    	$(".calc-show-mode,.on-error").css({
+    		opacity: 1,
+    		display: "flex"
+    	});
+    	$(".calc-display").data("error", true);
+    }
+    
+    function anyModeActive() {
+    	"use strict";
+    	return ($("#power-off").data("active") || $("#base-mode").data("progress") > 0 || $("#clear-mode").data("state") > 0 || $(".calc-display").data("error") || $(".calc-display").data("dispset") || $(".calc-display").data("contset") || $("#ireg").data("view") > 0 || $("#ssum").data("sdstate") === 1 || $("#svar").data("sdstate") === 1 || $("#ssum").data("regstate") === 1 || $("#svar").data("regstate") === 1);
+    }
+    
+    function getActiveDispMode() {
+    	"use strict";
+    	if ($("#ifix").data("active")) {
+    		return {
+    			disp: "fix",
+    			option: $("#ifix").data("option")
+    		};
+    	} else if ($("#isci").data("active")) {
+    		return {
+    			disp: "sci",
+    			option: $("#isci").data("option")
+    		};
+    	}
+    	return {
+    		disp: "norm",
+    		option: $("#inorm").data("option")
+    	};
+    }
+    
+    function getMode() {
+    	"use strict";
+    	if ($("#ireg").data("active")) {
+    		return "reg";
+    	} else if ($("#isd").data("active")) {
+    		return "sd";
+    	}
+    	return "comp";
+    }
+    
+    function getRegMode() {
+    	"use strict";
+    	const regMode = $("#ireg").data("regMode");
+    	if (regMode === "Exp" && $("#ireg").data("expTyp") === 1) {
+    		return "exp1";
+    	} else if (regMode === "Exp") {
+    		return "exp2";
+    	}
+    	return regMode;
+    }
+    
+    function getActiveUnit() {
+    	"use strict";
+    	if ($("#iconvd").data("active")) {
+    		return "deg";
+    	} else if ($("#iconvr").data("active")) {
+    		return "rad";
+    	}
+    	return "grad";
+    }
+    
+    $("#equals").click(() => {
+    	"use strict";
+    	if (!(anyModeActive()) && $(".calc-input > div").children().length > 0) {
+    		$.ajax({
+    			type: "POST",
+    			url: "{% url 'ajax-math' %}",
+    			data: {
+    				csrfmiddlewaretoken: '{{ csrf_token }}',
+    				expr: getExpr(),
+    				mode: getMode(),
+    				pt: JSON.stringify(getActiveDispMode()),
+    				aunit: getActiveUnit(),
+    			},
+    			success: function(response) {
+    				if (response.result === "Error") {
+    					$("#equals").data("Ans", 0);
+    					showError(response.resform); // resform is error msg for this case
+    				} else {
+    					if (typeof response.result === "object") {
+    						$(".calc-output-main").html(response.resform);
+    						const Ans = response.result[0];
+    						const Ans1 = response.result[0];
+    						const Ans2 = response.result[1];
+    						$("#equals").data({
+    							Ans: Ans,
+    							Ans1: Ans1,
+    							Ans2: Ans2
+    						});
+    						$(".calc-output").scrollLeft(0);
+    					} else {
+    						$(".calc-output-main").html(response.resform);
+    						$("#equals").data({
+    							Ans: response.result
+    						});
+    						$(".calc-output").scrollLeft(0);
+    					}
+    				}
+    				console.log(response);
+    			},
+    			error: function(response) {
+    				showError("Network Error");
+    				console.log(response);
+    			}
+    		});
+    		$(".calc-input-left").data("cursorOn",
+    			false).removeClass("cursor-on");
+    	}
+    });
+    $("#data").click(() => {
+    	"use strict";
+    	if (!(anyModeActive()) && $(".calc-input > div").children().length > 0) {
+    		$("#equals").trigger("click");
+    		$.ajax({
+    			type: "POST",
+    			url: "{% url 'ajax-sci' %}",
+    			data: {
+    				csrfmiddlewaretoken: '{{ csrf_token }}',
+    				expr: getExpr(),
+    				mode: getMode(),
+    				regMode: getRegMode(),
+    				history: JSON.stringify($("#data").data("history")),
+    				pt: JSON.stringify(getActiveDispMode()),
+    				aunit: getActiveUnit(),
+    			},
+    			success: function(response) {
+    				if (response.data === "Error") {
+    					setTimeout(() => {
+    						if (!($(".calc-display").data("error"))) {
+    							showError("Stats Error");
+    						}
+    					}, 150);
+    				} else {
+    					$("#data").data({
+    						regdata: response.data,
+    						history: response.history
+    					});
+    				}
+    				console.log($("#data").data("history"), response);
+    			},
+    			error: function(response) {
+    				showError("Network Error");
+    				console.log($("#data").data("history"), response);
+    			}
+    		});
+    	}
+    });
+    </script> 
     {% endblock jquery %}
