@@ -112,10 +112,7 @@
     				console.log(`${x} not matched`);
     		}
     	}
-    	if ($("#equals").data("recalculate")) {
-    		$("#equals").data("recalculate", false);
-    		return $("#equals").data("Ans");
-    	} else if (expr.match(/NotVal$/)) {
+    	if (expr.match(/NotVal$/)) {
     		return expr.replace(/NotVal$/, "");
     	}
     	return expr;

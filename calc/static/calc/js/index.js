@@ -315,7 +315,6 @@ $(() => {
 	}
 
 	function recalculate() {
-		$("#equals").data("recalculate", true);
 		setTimeout(() => {
 			$("#equals").trigger("click");
 		}, 150);
@@ -406,8 +405,7 @@ $(() => {
 		$("#equals").data({
 			Ans: 0,
 			Ans1: 0,
-			Ans2: 0,
-			recalculate: false
+			Ans2: 0
 		});
 		$("#ifix,#isci,#inorm").data("setting", false);
 		setTimeout(() => {
@@ -568,15 +566,18 @@ $(() => {
 			}
 		}
 	});
+	
+	$("#improper-frac, #proper-frac, #eng, #dis-eng, #nav-top, #nav-bottom").click(() => {
+	    if(!(anyModeActive())) {
+	        alert("Sorry, functionality unavailable yet.");
+	        supportModesToggle();
+	    }
+	});
 
 	//ac click
 	$("#acbtn").click(() => {
 		if (!($("#power-off").data("active"))) {
 			supportModesToggle();
-			$(".calc-display").data({
-				error: false,
-				contset: false
-			});
 			$(".calc-input").children().html("");
 			$(".calc-output-main").html("0");
 			$("#clear-mode,#drg").data("state", 0);
@@ -867,6 +868,10 @@ $(() => {
 				break;
 
 			default:
+			    if($(".calc-display").data("error")) {
+			        $(".calc-display").data("error", false);
+			        calcHome();
+			    }
 				if (!(anyModeActive())) {
 					$(".calc-input-left").data("cursorOn",
 						true).addClass("cursor-on");
@@ -1092,6 +1097,10 @@ $(() => {
 				break;
 
 			default:
+			    if($(".calc-display").data("error")) {
+			        $(".calc-display").data("error", false);
+			        calcHome();
+			    }
 				if (!(anyModeActive())) {
 					$(".calc-input-left").data("cursorOn",
 						true).addClass("cursor-on");
