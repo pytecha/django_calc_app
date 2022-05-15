@@ -1,0 +1,1 @@
+web: gunicorn iCalc.wsgi --log-file -
