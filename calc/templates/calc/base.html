@@ -1,0 +1,433 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'calc/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'calc/css/index.css' %}">
+    <title>iCalcDesign</title>
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.0" encoding="utf-8" width="0" height="0">
+        <defs>
+            <symbol id="icon-alpha" viewBox="0 0 30 30">
+                <circle cx="15px" cy="15px" r="13.5px" stroke="rgb(255,133,154)" fill="#3d3333" stroke-width="2px" />
+                <circle cx="15px" cy="15px" r="10px" fill="white" stroke="#3d3333" stroke-width="1px" />
+                <text x="10" y="20" fill="rgb(255,133,154)" font-weight="bold" font-size="15">A</text>
+            </symbol>
+            <symbol id="icon-arrow-head-right" viewBox="0 0 10 10">
+                <path stroke-linejoin="miter" stroke-width="1.5px" d="M0,5L0,1.5 8.5,5 0,8.5z" />
+            </symbol>
+            <symbol id="icon-arrow-left" viewBox="0 0 10 10">
+                <path fill="orange" stroke="orange" stroke-linejoin="miter" stroke-width="1.5px" d="M10,5L3.75,5 3.75,3.75 1.5,5 3.75,6.25 3.75,5" />
+            </symbol>
+            <symbol id="icon-base-mode" viewBox="0 0 30 30">
+                <circle cx="15px" cy="15px" r="13.5px" stroke="#0275d8" fill="#3d3333" stroke-width="2px" />
+                <circle cx="15px" cy="15px" r="10px" fill="white" stroke="#3d3333" stroke-width="1px" />
+                <text x="8.5" y="20.5" fill="#0275d8" font-weight="bold" font-size="15">M</text>
+            </symbol>
+            <symbol id="icon-cbrt" viewBox="0 0 30 20">
+                <path fill="none" stroke="orange" stroke-width="1.5px" d="M0,10 L5,10 8.75,18.75 10,1.25 30,1.25" />
+                <text x="0" y="8" fill="orange" font-size="11px">3</text>
+            </symbol>
+            <symbol id="icon-clear-mode" viewBox="0 0 30 30">
+                <circle cx="15px" cy="15px" r="13.5px" stroke="red" fill="black" stroke-width="2px" />
+                <circle cx="15px" cy="15px" r="10px" fill="white" stroke="black" stroke-width="1px" />
+                <text x="10" y="20" fill="red" font-weight="bold" font-size="15">X</text>
+            </symbol>
+            <symbol id="icon-colon" viewBox="0 0 15 15">
+                <circle cx="7.5" cy="11" r="1.25" fill="rgb(255,133,154)" stroke="rgb(255,133,154)" />
+                <circle cx="7.5" cy="4" r="1.25" fill="rgb(255,133,154)" stroke="rgb(255,133,154)" />
+            </symbol>
+            <symbol id="icon-divide" viewBox="0 0 15 15">
+                <path stroke="white" stroke-width="2px" d="M0,7.5L15,7.5" />
+                <circle cx="7.5" cy="3" r="2" fill="white" stroke="white" />
+                <circle cx="7.5" cy="12" r="2" fill="white" stroke="white" />
+            </symbol>
+            <symbol id="icon-dot" viewBox="0 0 20 20">
+                <circle cx="10" cy="10" r="2.5" fill="white" stroke="white" />
+            </symbol>
+            <symbol id="icon-equals" viewBox="0 0 15 15">
+                <path fill="white" stroke="white" stroke-width="2px" d="M0,4H15M0,12H15" />
+            </symbol>
+            <symbol id="icon-error" viewBox="0 0 30 30">
+                <circle stroke="black" fill="red" cx="15" cy="15" r="14" stroke-width="2" />
+                <path stroke="white" fill="none" stroke-width="2.5" d="M7,7L23,23M7,23L23,7" />
+            </symbol>
+            <symbol id="icon-exponent" viewBox="0 0 10 10">
+                <path fill="none" stroke="white" stroke-width="1.5px" d="M0.5,7L5,0.75 9.5,7" />
+            </symbol>
+            <symbol id="icon-improper-frac" viewBox="0 0 30 30">
+                <path stroke="orange" stroke-width="1px" fill="none" d="M7.5,15L22.5,15" />
+                <text x="10" y="13" fill="orange">d</text>
+                <text x="10" y="26" fill="orange">c</text>
+            </symbol>
+            <symbol id="icon-minus" viewBox="0 0 15 15">
+                <path stroke-width="2px" d="M0,7.5L15,7.5" />
+            </symbol>
+            <symbol id="icon-mixed-frac" viewBox="0 0 30 30">
+                <path stroke="white" stroke-width="1px" fill="none" d="M12.5,15L27.5,15" />
+                <text x="2.5" y="20" fill="white">a</text>
+                <text x="15" y="13" fill="white">b</text>
+                <text x="15" y="26" fill="white">c</text>
+            </symbol>
+            <symbol id="icon-nav-btn" viewBox="0 0 45 40">
+                <path fill="#3d3333" stroke="white" stroke-width="3" stroke-linecap="round" d="M2,20V5C2,5 2 ,2 7.5,5H32.5C32.5,5 37.5,5 43,12M2,20V35C2,35 2,38 7.5,35H32.5C32.5,35 37.5,35 43,28V12" />
+            </symbol>
+            <symbol id="icon-percent" viewBox="0 0 15 15">
+                <path fill="orange" stroke="orange" stroke-width="2px" d="M0,15L15,0" />
+                <circle cx="3" cy="3" r="2" fill="none" stroke="orange" stroke-width="2px" />
+                <circle cx="12" cy="12" r="2" fill="none" stroke="orange" stroke-width="2px" />
+            </symbol>
+            <symbol id="icon-plus" viewBox="0 0 15 15">
+                <path fill="white" stroke="white" stroke-width="2px" d="M0,7.5L15,7.5M7.5,0L7.5,15" />
+            </symbol>
+            <symbol id="icon-power-off" viewBox="0 0 20 20">
+                <circle cx="10" cy="10" r="9" stroke="white" fill="white" />
+                <path fill="none" stroke="#d9534f" stroke-width="2.25px" stroke-linecap="round" shape-rendering="geometricPrecision" d="M7,6A 5 5 0 1 0 13,6M10,10V3.25" />
+                <circle cx="10" cy="10" r="1.5" stroke="#3d3333" fill="#3d3333" />
+            </symbol>
+            <symbol id="icon-power-on" viewBox="0 0 20 20">
+                <circle cx="10" cy="10" r="9" stroke="white" fill="white" />
+                <path fill="none" stroke="#d9534f" stroke-width="2.25px" stroke-linecap="round" shape-rendering="geometricPrecision" d="M7,6A 5 5 0 1 0 13,6M10,10V3.25" />
+                <circle cx="10" cy="10" r="1.5" stroke="#3d3333" fill="#3d3333" />
+            </symbol>
+            <symbol id="icon-semicolon" viewBox="0 0 20 20">
+                <circle cx="10" cy="6.15" r="2.85" fill="orange" />
+                <text x="7" y="22.5" fill="orange">&#x275C;</text>
+            </symbol>
+            <symbol id="icon-shift" viewBox="0 0 30 30">
+                <circle cx="15px" cy="15px" r="13.5px" stroke="orange" fill="#3d3333" stroke-width="2px" />
+                <circle cx="15px" cy="15px" r="10px" fill="white" stroke="#3d3333" stroke-width="1px" />
+                <text x="10" y="20" fill="orange" font-weight="bold" font-size="15">S</text>
+            </symbol>
+            <symbol id="icon-sqrt" viewBox="0 0 30 20">
+                <path fill="none" stroke="white" stroke-width="1.5px" d="M0,10L5,10 8.75,18.75 10,1.25 30,1.25" />
+            </symbol>
+            <symbol id="icon-times" viewBox="0 0 15 15">
+                <path fill="white" stroke="white" stroke-linejoin="miter" stroke-width="2px" d="M0,15L15,0M0,0L15,15" />
+            </symbol>
+            <symbol id="icon-x-root" viewBox="0 0 30 20">
+                <path fill="none" stroke="orange" stroke-width="1.5px" d="M0,10L5,10 8.75,18.75 10,1.25 30,1.25" />
+                <text x="0" y="8" fill="orange" font-size="11px">x</text>
+            </symbol>
+            <symbol id="icon-x-hat" viewBox="0 0 20 20">
+                <path fill="none" stroke="black" d="M6.25,5L10,1 13.75,5" />
+                <text x="2.75" y="20" font-size="24" fill="black">x</text>
+            </symbol>
+            <symbol id="icon-x-bar" viewBox="0 0 20 20">
+                <path fill="none" stroke="black" d="M5,4.5H15" />
+                <text x="2.75" y="20" font-size="24" fill="black">x</text>
+            </symbol>
+            <symbol id="icon-y-bar" viewBox="0 0 20 25">
+                <path fill="none" stroke="black" d="M5,2H15" />
+                <text x="2.75" y="18" font-size="24" fill="black">y</text>
+            </symbol>
+            <symbol id="icon-y-hat" viewBox="0 0 20 25">
+                <path fill="none" stroke="black" d="M6.25,3.75L10,0.5 13.75,3.75" />
+                <text x="2.75" y="18.75" font-size="24" fill="black">y</text>
+            </symbol>
+        </defs>
+    </svg>
+    <div class="container d-flex justify-content-center">
+        <div class="calc-body pb-4">
+            <div class="calc-label py-2 m-auto d-flex justify-content-between">
+                <h3 class="text-white py-2" style="font-family:aquire;">AROCALC</h3>
+                <h6 class="text-white py-2 fw-bold" style="font-family:monospace;">1st Edition</h6>
+            </div>
+            <div class="calc-slogan m-auto">
+                <h5 class="text-white text-center fst-italic pb-2" style="font-size:12px;">Powerful Everyday!</h5>
+            </div>
+            <div class="calc-display rounded-3 m-auto" data-disp="dot" data-color-depth="255">
+                <div class="calc-indicators d-none">
+                    <span id="ishift">S</span>
+                    <span id="ialpha">A</span>
+                    <span id="ihyp">Hyp</span>
+                    <span id="iins">Ins</span>
+                    <span id="ilttrm">M</span>
+                    <span id="isto">STO</span>
+                    <span id="ircl">RCL</span>
+                    <span id="isd">SD</span>
+                    <span id="ireg">REG</span>
+                    <span id="iconvd" data-active="true">D</span>
+                    <span id="iconvr">R</span>
+                    <span id="iconvg">G</span>
+                    <span id="ifix">FIX</span>
+                    <span id="isci">SCI</span>
+                    <span id="inorm" data-active="true" data-option="2">NRM</span>
+                </div>
+                <div class="calc-input p-1 mx-1 mt-1 rounded" style="font-family:monospace;">
+                    <div class="calc-input-left"></div>
+                    <div class="calc-input-right me-1"></div>
+                </div>
+                <div class="calc-output rounded mb-1 mx-1 px-1">
+                    <div class="calc-output-main"></div>
+                </div>
+                <!--div class="text-center">Select ?</div-->
+                <div class="calc-show-mode rounded-3 p-3">
+                    <div class="show-first pt-1">
+                        <div class="mode-text-1 btn btn-lg w-100 h2 rounded p-2"></div>
+                        <div class="mode-id-1 h4">
+                            1
+                        </div>
+                    </div>
+                    <div class="show-second pt-1">
+                        <div class="mode-text-2 btn btn-lg w-100 h2 rounded p-2"></div>
+                        <div class="mode-id-2 h4">
+                            2
+                        </div>
+                    </div>
+                    <div class="show-third pt-1">
+                        <div class="mode-text-3 btn btn-lg w-100 h2 rounded p-2"></div>
+                        <div class="mode-id-3 h4">
+                            3
+                        </div>
+                    </div>
+                    <div class="show-forth pt-1">
+                        <div class="mode-text-4 btn btn-lg w-100 h2 rounded p-2"></div>
+                        <div class="mode-id-3 h4">
+                            4
+                        </div>
+                    </div>
+                    <div class="contrast w-100 px-3 py-1 my-3 rounded">
+                        <div class="text-dark fs-4 d-flex fw-bold">
+                            <svg class="icon me-2" style="transform:rotate(180deg);"><use xlink:href="#icon-arrow-head-right" href="#icon-arrow-head-right"></use></svg>
+                            LIGHT
+                        </div>
+                        <div class="fs-3" style="font-family:latexify;">
+                            AC001
+                        </div>
+                        <div class="text-dark fs-4 d-flex fw-bold">
+                            DARK
+                            <svg class="icon ms-2"><use xlink:href="#icon-arrow-head-right" href="#icon-arrow-head-right"></use></svg>
+                        </div>
+                    </div>
+                    <div class="on-error px-3 pt-1 pb-2 w-75 rounded-3">
+                        <div class="error-box fs-3"></div>
+                        <div>
+                            <svg class="icon icon-error"><use xlink:href="#icon-error" href="#icon-error"></use></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="scroll-hint px-3">
+                    <div class="sh-left me-auto animate-scroll-hint">
+                        <svg class="icon icon-arrow-left"><use xlink:href="#icon-arrow-left" href="#icon-arrow-left"></use></svg>
+                    </div>
+                    <div class="sh-right ms-auto animate-scroll-hint">
+                        <svg class="icon icon-arrow-left"><use xlink:href="#icon-arrow-left" href="#icon-arrow-left"></use></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="calc-controls my-3 m-auto">
+                <div class="bg-light rounded py-1 px-2">
+                    <div class="rounded p-1 mode-togglers">
+                        <button class="btn" id="shift"><svg class="icon icon-shift"><use xlink:href="#icon-shift" href="#icon-shift"></use></svg></button>
+                        <button class="btn" id="alpha"><svg class="icon icon-alpha"><use xlink:href="#icon-alpha" href="#icon-alpha"></use></svg></button>
+                    </div>
+                    <div class="d-flex justify-content-between mt-1 mode-togglers-nbs">
+                        <button class="btn btn-sm py-0" id="reciprocal">
+                            <span>X</span><sup><svg class="icon icon-reciprocal icon-minus-xm"><use xlink:href="#icon-minus" href="#icon-minus"></use></svg>1</sup>
+                        </button>
+                        <button class="btn btn-sm py-0 apply-cursive" id="factorial">X!</button>
+                        <button class="btn btn-sm" id="combination-func">nCr</button>
+                        <button class="btn btn-sm" id="permutation-func">nPr</button>
+                    </div>
+                </div>
+                <div class="navigators bg-white">
+                    <button class="btn" id="nav-left"><svg class="icon icon-nav-btn"><use xlink:href="#icon-nav-btn" href="#icon-nav-btn"></use></svg></button>
+                    <button class="btn" id="nav-top"><svg class="icon icon-nav-btn"><use xlink:href="#icon-nav-btn" href="#icon-nav-btn"></use></svg></button>
+                    <button class="btn" id="nav-bottom"><svg class="icon icon-nav-btn"><use xlink:href="#icon-nav-btn" href="#icon-nav-btn"></use></svg></button>
+                    <button class="btn" id="nav-right"><svg class="icon icon-nav-btn"><use xlink:href="#icon-nav-btn" href="#icon-nav-btn"></use></svg></button>
+                </div>
+                <div class="bg-light rounded py-1 px-2">
+                    <div class="d-flex justify-content-between rounded p-1 mode-togglers">
+                        <button class="btn" id="base-mode"><svg class="icon icon-base-mode"><use xlink:href="#icon-base-mode" href="#icon-base-mode"></use></svg></button>
+                        <button class="btn" id="clear-mode"><svg class="icon icon-clear-mode"><use xlink:href="#icon-clear-mode" href="#icon-clear-mode"></use></svg></button>
+                        <button class="btn" id="power-on"><svg class="icon icon-power-on"><use xlink:href="#icon-power-on" href="#icon-power-on"></use></svg></button>
+                    </div>
+                    <div class="d-flex justify-content-between mt-1 mode-togglers-nbs">
+                        <button class="btn btn-sm" id="polar-func">Pol(</button>
+                        <button class="btn btn-sm" id="rec-func">Rec(</button>
+                        <button class="btn btn-sm" id="colon">
+                            <svg class="icon icon-colon"><use xlink:href="#icon-colon" href="#icon-colon"></use></svg>
+                        </button>
+                        <button class="btn btn-sm" id="cube">
+                            <span>X</span><sup>3</sup>
+                        </button>
+                        <button class="btn btn-sm py-0" id="cbrt">
+                            <svg class="icon icon-cbrt"><use xlink:href="#icon-cbrt" href="#icon-cbrt"></use></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="upper-deck rounded-top bg-light p-2">
+                <div class="d-flex justify-content-between">
+                    <button class="btn" id="proper-frac">
+                        <svg class="icon icon-mixed-frac"><use xlink:href="#icon-mixed-frac" href="#icon-mixed-frac"></use></svg>
+                    </button>
+                    <button class="btn" id="improper-frac">
+                        <svg class="icon icon-improper-frac"><use xlink:href="#icon-improper-frac" href="#icon-improper-frac"></use></svg>
+                    </button>
+                    <button class="btn" id="sqrt">
+                        <svg class="icon icon-sqrt"><use xlink:href="#icon-sqrt" href="#icon-sqrt"></use></svg>
+                    </button>
+                    <button class="btn btn-sm py-0" id="square">
+                        <span>X</span><sup>2</sup>
+                    </button>
+                    <button class="btn" id="exponent">
+                        <svg class="icon icon-exponent"><use xlink:href="#icon-exponent" href="#icon-exponent"></use></svg>
+                    </button>
+                    <button class="btn" id="x-root">
+                        <svg class="icon icon-x-root"><use xlink:href="#icon-x-root" href="#icon-x-root"></use></svg>
+                    </button>
+                    <button class="btn" id="log">log</button>
+                    <button class="btn btn-sm py-0" id="antilog">10<sup>x</sup></button>
+                    <button class="btn" id="ln">ln</button>
+                    <button class="btn btn-sm py-0" id="e-base-value">e</button>
+                    <button class="btn btn-sm py-0" id="antiln">e<sup>x</sup></button>
+                </div>
+                <div class="d-flex justify-content-between py-1">
+                    <button class="btn" id="dash">
+                        (<svg class="icon icon-dash"><use xlink:href="#icon-minus" href="#icon-minus"></use></svg>)
+                    </button>
+                    <button class="btn" id="lttra">A</button>
+                    <button class="btn btn-sm" id="degree-entry"><sup>o </sup>&#10076; &#10076; &#10076;</button>
+                    <button class="btn" id="lttrb">B</button>
+                    <button class="btn" id="sexa-convert">
+                        <sup>
+                            <svg class="icon icon-sexa"><use xlink:href="#icon-arrow-left" href="#icon-arrow-left"></use></svg>o
+                        </sup>
+                    </button>
+                    <button class="btn" id="hyp">hyp</button>
+                    <button class="btn" id="lttrc">C</button>
+                    <button class="btn" id="sin">sin</button>
+                    <button class="btn" id="sinh">sinh</button>
+                    <button class="btn" id="lttrd">D</button>
+                    <button class="btn btn-sm px-0" id="arcsin">
+                        sin<sup>
+                            <svg class="icon icon-minus-xm"><use xlink:href="#icon-minus" href="#icon-minus"></use></svg>1
+                        </sup>
+                    </button>
+                    <button class="btn btn-sm px-0" id="arcsinh">
+                        sinh<sup>
+                            <svg class="icon icon-arcsinh icon-minus-xm"><use xlink:href="#icon-minus" href="#icon-minus"></use></svg>1
+                        </sup>
+                    </button>
+                    <button class="btn" id="cos">cos</button>
+                    <button class="btn btn-sm" id="cosh">cosh</button>
+                    <button class="btn" id="lttre">E</button>
+                    <button class="btn btn-sm px-0" id="arcos">
+                        cos<sup>
+                            <svg class="icon icon-minus-xm"><use xlink:href="#icon-minus" href="#icon-minus"></use></svg>1
+                        </sup>
+                    </button>
+                    <button class="btn btn-sm px-0" id="arcosh">
+                        cosh<sup>
+                            <svg class="icon icon-arcosh icon-minus-xm"><use xlink:href="#icon-minus" href="#icon-minus"></use></svg>1
+                        </sup>
+                    </button>
+                    <button class="btn" id="tan">tan</button>
+                    <button class="btn" id="tanh">tanh</button>
+                    <button class="btn" id="lttrf">F</button>
+                    <button class="btn btn-sm px-0" id="arctan">
+                        tan<sup>
+                            <svg class="icon icon-minus-xm"><use xlink:href="#icon-minus" href="#icon-minus"></use></svg>1
+                        </sup>
+                    </button>
+                    <button class="btn btn-sm px-0" id="arctanh">
+                        tanh<sup>
+                            <svg class="icon icon-arctanh icon-minus-xm"><use xlink:href="#icon-minus" href="#icon-minus"></use></svg>1
+                        </sup>
+                    </button>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button class="btn" id="rcl">RCL</button>
+                    <button class="btn" id="sto">STO</button>
+                    <button class="btn" id="eng">ENG</button>
+                    <button class="btn" id="dis-eng">
+                        <sup>
+                            <svg class="icon icon-eng"><use xlink:href="#icon-arrow-left" href="#icon-arrow-left"></use></svg>E
+                        </sup>
+                    </button>
+                    <button class="btn" id="l-parenthesis">(</button>
+                    <button class="btn" id="r-parenthesis">)</button>
+                    <button class="btn" id="lttrx">X</button>
+                    <button class="btn" id="comma">&#10076;</button>
+                    <button class="btn" id="lttry">Y</button>
+                    <button class="btn btn-sm py-0" id="semicolon">
+                        <svg class="icon icon-semicolon"><use xlink:href="#icon-semicolon" href="#icon-semicolon"></use></svg>
+                    </button>
+                    <button class="btn" id="plusm">M+</button>
+                    <button class="btn" id="lttrm">M</button>
+                    <button class="btn text-primary bg-secondary bg-opacity-50 fw-bold" id="data">DT</button>
+                    <button class="btn text-danger bg-secondary bg-opacity-50 fw-bold" id="cldt">CL</button>
+                    <button class="btn" id="minusm">
+                        M<svg class="icon icon-minus-xm"><use xlink:href="#icon-minus" href="#icon-minus"></use></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="lower-deck rounded-bottom bg-light px-2 pt-2 pb-1">
+                <div class="d-flex justify-content-between">
+                    <button class="btn number-entry" id="seven">7</button>
+                    <button class="btn number-entry" id="eight">8</button>
+                    <button class="btn number-entry" id="nine">9</button>
+                    <button class="btn" id="del" style="background-color:#924545;">DEL</button>
+                    <button class="btn bg-warning text-dark" id="ins">INS</button>
+                    <button class="btn" id="acbtn" style="background-color:#924545;">AC</button>
+                    <button class="btn" id="power-off" data-active="true" style="background-color:#924545;color:white;">OFF</button>
+                </div>
+                <div class="d-flex justify-content-between py-1">
+                    <button class="btn number-entry" id="four">4</button>
+                    <button class="btn number-entry" id="five">5</button>
+                    <button class="btn number-entry" id="six">6</button>
+                    <button class="btn" id="times">
+                        <svg class="icon i-math-sign icon-times"><use xlink:href="#icon-times" href="#icon-times"></use></svg>
+                    </button>
+                    <button class="btn" id="divide">
+                        <svg class="icon i-math-sign icon-divide"><use xlink:href="#icon-divide" href="#icon-divide"></use></svg>
+                    </button>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button class="btn number-entry" id="one">1</button>
+                    <button class="btn btn-sm text-primary px-0 bg-secondary bg-opacity-50 fw-bold" id="ssum">S-SUM</button>
+                    <button class="btn number-entry" id="two">2</button>
+                    <button class="btn btn-sm text-primary px-0 bg-secondary bg-opacity-50 fw-bold" id="svar">S-VAR</button>
+                    <button class="btn number-entry" id="three">3</button>
+                    <button class="btn" id="plus">
+                        <svg class="icon i-math-sign icon-plus"><use xlink:href="#icon-plus" href="#icon-plus"></use></svg>
+                    </button>
+                    <button class="btn" id="minus">
+                        <svg class="icon i-math-sign icon-minus"><use xlink:href="#icon-minus" href="#icon-minus"></use></svg>
+                    </button>
+                </div>
+                <div class="d-flex justify-content-between py-1">
+                    <button class="btn number-entry" id="zero">0</button>
+                    <button class="btn" id="rnd">Rnd</button>
+                    <button class="btn" id="dot">
+                        <svg class="icon i-math-sign icon-dot"><use xlink:href="#icon-dot" href="#icon-dot"></use></svg>
+                    </button>
+                    <button class="btn" id="rand">Ran#</button>
+                    <button class="btn btn-sm py-0 number-entry" id="pow10"><span style="font-size:14px;font-weight:bold;">&#10761;</span>10<sup style="font-size:15px;">x</sup></button>
+                    <button class="btn btn-sm py-0" id="pi">&#960;</button>
+                    <button class="btn" id="ans">Ans</button>
+                    <button class="btn btn-sm px-0" id="drg">DRG
+                        <svg class="icon icon-drg"><use xlink:href="#icon-arrow-head-right" href="#icon-arrow-head-right"></use></svg>
+                    </button>
+                    <button class="btn" id="equals">
+                        <svg class="icon i-math-sign icon-equals"><use xlink:href="#icon-equals" href="#icon-equals"></use></svg>
+                    </button>
+                    <button class="btn" id="percent">
+                        <svg class="icon i-math-sign icon-percent"><use xlink:href="#icon-percent" href="#icon-percent"></use></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'calc/js/jquery.js' %}"></script>
+    <script src="{% static 'calc/js/index.js' %}"></script>
+    {% block jquery %} {% endblock jquery %}
+
+</body>
+</html>
